@@ -1,0 +1,23 @@
+## AUTO-DETECT
+##   Handle line endings automatically for files detected as
+##   text and leave all files detected as binary untouched.
+##   This will handle all files NOT defined below.
+* text=auto eol=lf
+
+*.bat  text eol=crlf
+
+# Java sources
+*.java          text eol=lf diff=java
+*.gradle        text eol=lf diff=java
+*.gradle.kts    text eol=lf diff=java
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.class         binary
+*.dll           binary
+*.ear           binary
+*.jar           binary
+*.so            binary
+*.war           binary
+*.exe           binary
+chromedriver    binary
