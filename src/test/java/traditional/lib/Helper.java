@@ -96,6 +96,7 @@ public class Helper {
 
     public boolean isHeightTheSame(ChartBarPojo before, ChartBarPojo after) {
         // I allow 3 pixels tolerance as opencv shape detection is not accurate enough
+        System.out.println(before.getHeight() + " -- " + after.getHeight());
         return before.getHeight() >= (after.getHeight() - 3) && before.getHeight() <= (after.getHeight() + 3);
     }
 }

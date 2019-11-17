@@ -3,7 +3,6 @@ package traditional.pages;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import traditional.lib.Helper;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -25,6 +24,14 @@ public class ChartPage {
     public String makeCanvasScreenshot() {
         WebElement img = getCanvas();
         String path;
+
+        // Not a good idea, but could not figure out a way to wait for canvas animation to finish
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         try {
             path = System.getProperty("user.dir") + "/tmp/chart_" + System.currentTimeMillis() + ".png";
             File screenshot = ((TakesScreenshot)helper.getDriver()).getScreenshotAs(OutputType.FILE);

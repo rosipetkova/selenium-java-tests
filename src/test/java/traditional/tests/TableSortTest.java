@@ -13,7 +13,8 @@ import java.util.List;
 public class TableSortTest extends BaseTest {
     private static final String username = "test";
     private static final String password = "qwerty123";
-    private TablePage tablePage;
+    private List<TableRowPojo> pojosBeforeSort;
+    private List<TableRowPojo> pojosAfterSort;
 
     @Override
     public void setUp() {
@@ -21,26 +22,38 @@ public class TableSortTest extends BaseTest {
         LoginPage loginPage = new LoginPage(helper);
         loginPage.login(username, password);
 
-        tablePage = new TablePage(helper);
+        TablePage tablePage = new TablePage(helper);
+        Assert.assertNotNull("Table not found!", tablePage.getTransactionsTable());
+
+        pojosBeforeSort = tablePage.convertRowsToPojo();
+        tablePage.sortByAmount();
+        pojosAfterSort = tablePage.convertRowsToPojo();
     }
 
     @Test
-    public void checkSorting() {
+    public void verifySorting() {
         ArrayList<Float> amountsBefore = new ArrayList<>();
+        for (TableRowPojo pojo : pojosBeforeSort) {
+            amountsBefore.add(pojo.getCastedAmount());
+        }
+
+        // Check if table is not sorted before sort
+        Assert.assertFalse(helper.checkSorting(amountsBefore));
+
         ArrayList<Float> amountsAfter = new ArrayList<>();
+        for (TableRowPojo pojo : pojosAfterSort) {
+            amountsAfter.add(pojo.getCastedAmount());
+        }
 
-        Assert.assertNotNull("Table not found!", tablePage.getTransactionsTable());
+        // Check if sorting is OK after sort
+        Assert.assertTrue(helper.checkSorting(amountsAfter));
+    }
 
-        List<TableRowPojo> pojosBeforeSort = tablePage.convertRowsToPojo();
-        tablePage.sortByAmount();
-        List<TableRowPojo> pojosAfterSort = tablePage.convertRowsToPojo();
-
+    @Test
+    public void verifyData() {
         // Check if data is consistent
         for (TableRowPojo pojo1 : pojosAfterSort) {
-            amountsAfter.add(pojo1.getCastedAmount());
-            amountsBefore.clear();
             for (TableRowPojo pojo2 : pojosBeforeSort) {
-                amountsBefore.add(pojo2.getCastedAmount());
                 if (pojo1.getCastedAmount().equals(pojo2.getCastedAmount())) {
                     Assert.assertEquals(pojo1.getCategory(), pojo2.getCategory());
                     Assert.assertEquals(pojo1.getDescription(), pojo2.getDescription());
@@ -50,11 +63,5 @@ public class TableSortTest extends BaseTest {
                 }
             }
         }
-
-        // Check if table is not sorted before sort
-        Assert.assertFalse(helper.checkSorting(amountsBefore));
-
-        // Check if sorting is OK after sort
-        Assert.assertTrue(helper.checkSorting(amountsAfter));
     }
 }

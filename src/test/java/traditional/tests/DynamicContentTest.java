@@ -24,8 +24,12 @@ public class DynamicContentTest extends BaseTest {
     }
 
     @Test
-    public void verifyAds() {
+    public void verifyFirstBanner() {
         Assert.assertNotNull("First banner not found!", tablePage.getFirstBanner());
+    }
+
+    @Test
+    public void verifySecondBanner() {
         Assert.assertNotNull("Second banner not found!", tablePage.getSecondBanner());
     }
 }

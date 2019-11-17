@@ -6,29 +6,83 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class LoginPageUiTest extends BaseTest {
+    private LoginPage loginPage;
+
+    @Override
+    public void setUp() {
+        super.setUp();
+        loginPage = new LoginPage(helper);
+    }
+
     @Test
-    public void loginPage() {
-        LoginPage page = new LoginPage(helper);
-        Assert.assertNotNull("Heading not found!", page.getHeading());
-        Assert.assertEquals("Login Form", page.getHeadingText());
+    public void verifyHeading() {
+        Assert.assertNotNull("Heading not found!", loginPage.getHeading());
+        Assert.assertEquals("Login Form", loginPage.getHeadingText());
+    }
 
-        Assert.assertNotNull("Username field not found!", page.getUsernameField());
-        Assert.assertEquals("Enter your username", page.getUsernameFieldPlaceholder());
-        Assert.assertNotNull("User icon not found!", page.getUserIcon());
-        Assert.assertNotNull("Username label not found!", page.getUsernameLabel());
+    @Test
+    public void verifyLoginButton() {
+        Assert.assertNotNull("Login button field not found!", loginPage.getLoginButton());
+        Assert.assertEquals("Log In", loginPage.getLoginButtonText());
+    }
 
-        Assert.assertNotNull("Password field not found!", page.getPasswordField());
-        Assert.assertEquals("Enter your password", page.getPasswordFieldPlaceholder());
-        Assert.assertNotNull("Fingerprint icon not found!", page.getFingerprintIcon());
-        Assert.assertNotNull("Password label not found!", page.getPasswordLabel());
+    @Test
+    public void verifyRememberMe() {
+        Assert.assertNotNull("Remember me checkbox not found!", loginPage.getRememberMe());
+    }
 
-        Assert.assertNotNull("Login button field not found!", page.getLoginButton());
-        Assert.assertEquals("Log In", page.getLoginButtonText());
+    @Test
+    public void verifyTwitterButton() {
+        Assert.assertNotNull("Twitter button not found!", loginPage.getTwitterButton());
+    }
 
-        Assert.assertNotNull("Remember me checkbox not found!", page.getRememberMe());
+    @Test
+    public void verifyFacebookButton() {
+        Assert.assertNotNull("Facebook button not found!", loginPage.getFacebookButton());
+    }
 
-        Assert.assertNotNull("Twitter button not found!", page.getTwitterButton());
-        Assert.assertNotNull("Facebook button not found!", page.getFacebookButton());
-        Assert.assertNotNull("Linkedin button not found!", page.getLinkedinButton());
+    @Test
+    public void verifyLinkedinButton() {
+        Assert.assertNotNull("Linkedin button not found!", loginPage.getLinkedinButton());
+    }
+
+    @Test
+    public void verifyUsernameField() {
+        Assert.assertNotNull("Username field not found!", loginPage.getUsernameField());
+    }
+
+    @Test
+    public void verifyUsernamePlaceholder() {
+        Assert.assertEquals("Enter your username", loginPage.getUsernameFieldPlaceholder());
+    }
+
+    @Test
+    public void verifyUsernameLabel() {
+        Assert.assertNotNull("Username label not found!", loginPage.getUsernameLabel());
+    }
+
+    @Test
+    public void verifyUsernameIcon() {
+        Assert.assertNotNull("User icon not found!", loginPage.getUserIcon());
+    }
+
+    @Test
+    public void verifyPasswordField() {
+        Assert.assertNotNull("Password field not found!", loginPage.getPasswordField());
+    }
+
+    @Test
+    public void verifyPasswordPlaceholder() {
+        Assert.assertEquals("Enter your password", loginPage.getPasswordFieldPlaceholder());
+    }
+
+    @Test
+    public void verifyPasswordLabel() {
+        Assert.assertNotNull("Password label not found!", loginPage.getPasswordLabel());
+    }
+
+    @Test
+    public void verifyPasswordIcon() {
+        Assert.assertNotNull("Fingerprint icon not found!", loginPage.getFingerprintIcon());
     }
 }
