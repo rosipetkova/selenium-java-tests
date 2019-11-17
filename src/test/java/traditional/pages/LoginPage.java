@@ -16,8 +16,6 @@ public class LoginPage {
     private By facebookBtn = By.cssSelector("img[src$=\"facebook.png\"]");
     private By linkedinBtn = By.cssSelector("img[src$=\"linkedin.png\"]");
     private By heading = By.cssSelector(".auth-header");
-    private By userIcon = By.cssSelector(".os-icon-user-male-circle");
-    private By fingerprintIcon = By.cssSelector(".os-icon-fingerprint");
     private By alertBox = By.cssSelector(".alert-warning[role=\"alert\"]");
 
     public LoginPage(Helper helper) {
@@ -73,14 +71,6 @@ public class LoginPage {
 
     public WebElement getLinkedinButton() {
         return helper.waitForElementVisible(linkedinBtn);
-    }
-
-    public WebElement getUserIcon() {
-        return helper.waitForElementVisible(userIcon);
-    }
-
-    public WebElement getFingerprintIcon() {
-        return helper.waitForElementVisible(fingerprintIcon);
     }
 
     public WebElement getHeading() {

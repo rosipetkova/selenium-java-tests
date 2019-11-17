@@ -62,11 +62,6 @@ public class LoginPageUiTest extends BaseTest {
     }
 
     @Test
-    public void verifyUsernameIcon() {
-        Assert.assertNotNull("User icon not found!", loginPage.getUserIcon());
-    }
-
-    @Test
     public void verifyPasswordField() {
         Assert.assertNotNull("Password field not found!", loginPage.getPasswordField());
     }
@@ -79,10 +74,5 @@ public class LoginPageUiTest extends BaseTest {
     @Test
     public void verifyPasswordLabel() {
         Assert.assertNotNull("Password label not found!", loginPage.getPasswordLabel());
-    }
-
-    @Test
-    public void verifyPasswordIcon() {
-        Assert.assertNotNull("Fingerprint icon not found!", loginPage.getFingerprintIcon());
     }
 }

@@ -23,7 +23,7 @@ public class DataDrivenTest extends BaseTest {
         loginPage.clickLoginButton();
 
         Assert.assertNotNull("Alert box not found!", loginPage.getAlertBox());
-        Assert.assertEquals("Both Username and Password must be present", loginPage.getAlertBoxText());
+        Assert.assertEquals("Please enter both username and password", loginPage.getAlertBoxText());
     }
 
     @Test
