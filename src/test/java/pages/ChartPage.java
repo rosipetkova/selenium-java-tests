@@ -1,8 +1,8 @@
-package traditional.pages;
+package pages;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import traditional.lib.Helper;
+import lib.Helper;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -33,7 +33,7 @@ public class ChartPage {
         }
 
         try {
-            path = System.getProperty("user.dir") + "/tmp/chart_" + System.currentTimeMillis() + ".png";
+            path = helper.getTempPath() + "chart_" + System.currentTimeMillis() + ".png";
             File screenshot = ((TakesScreenshot)helper.getDriver()).getScreenshotAs(OutputType.FILE);
             BufferedImage fullImg = ImageIO.read(screenshot);
 

@@ -1,7 +1,7 @@
 package traditional.tests;
 
-import traditional.lib.BaseTest;
-import traditional.pages.LoginPage;
+import lib.BaseTest;
+import pages.LoginPage;
 import org.junit.Assert;
 import org.junit.Test;
 

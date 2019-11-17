@@ -4,11 +4,11 @@ import nu.pattern.OpenCV;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import traditional.lib.BaseTest;
+import lib.BaseTest;
 import traditional.enums.HsvColors;
-import traditional.pages.ChartPage;
-import traditional.pages.LoginPage;
-import traditional.pages.TablePage;
+import pages.ChartPage;
+import pages.LoginPage;
+import pages.TablePage;
 import traditional.pojos.ChartBarPojo;
 
 import java.io.File;

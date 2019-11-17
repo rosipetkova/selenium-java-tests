@@ -1,8 +1,8 @@
 package traditional.tests;
 
-import traditional.lib.BaseTest;
-import traditional.pages.LoginPage;
-import traditional.pages.TablePage;
+import lib.BaseTest;
+import pages.LoginPage;
+import pages.TablePage;
 import traditional.pojos.TableRowPojo;
 import org.junit.Assert;
 import org.junit.Test;

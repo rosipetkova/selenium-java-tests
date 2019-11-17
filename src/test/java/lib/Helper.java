@@ -1,4 +1,4 @@
-package traditional.lib;
+package lib;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.opencv.core.Point;
 import traditional.enums.HsvColors;
 import traditional.pojos.ChartBarPojo;
+import static com.google.common.base.Strings.isNullOrEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +23,13 @@ public class Helper {
     private static final int waitTimeout = 5;
 
     public Helper() {
-        String chromeDriverPath = System.getProperty("user.dir") + "/bin/";
+        String chromeDriverPath = System.getProperty("user.dir");
         if (OS.contains("nix") || OS.contains("nux") || OS.indexOf("aix") > 0 ) {
             // Linux
-            chromeDriverPath += "linux/chromedriver";
+            chromeDriverPath += "/bin/linux/chromedriver";
         } else if (OS.contains("win")) {
             // Win
-            chromeDriverPath += "win/chromedriver.exe";
+            chromeDriverPath += "\\bin\\win\\chromedriver.exe";
         }
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         webDriver = new ChromeDriver();
@@ -40,6 +41,13 @@ public class Helper {
 
     public void shutDownDriver() {
         webDriver.quit();
+    }
+
+    public static String getConfigProperty(String key) {
+        if (!isNullOrEmpty(System.getenv(key))) {
+            return System.getenv(key);
+        }
+        return System.getProperty(key);
     }
 
     public WebElement waitForElementVisible(By locator) {
@@ -97,5 +105,17 @@ public class Helper {
     public boolean isHeightTheSame(ChartBarPojo before, ChartBarPojo after) {
         // I allow 3 pixels tolerance as opencv shape detection is not accurate enough
         return before.getHeight() >= (after.getHeight() - 3) && before.getHeight() <= (after.getHeight() + 3);
+    }
+
+    public String getTempPath() {
+        String path = System.getProperty("user.dir");
+        if (OS.contains("nix") || OS.contains("nux") || OS.indexOf("aix") > 0 ) {
+            // Linux
+            path += "/tmp/";
+        } else if (OS.contains("win")) {
+            // Win
+            path += "\\tmp\\";
+        }
+        return  path;
     }
 }

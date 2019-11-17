@@ -1,11 +1,14 @@
-package traditional.lib;
+package lib;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-public class BaseTest {
+@RunWith(JUnit4.class)
+abstract public class BaseTest {
     protected Helper helper;
-    protected static final String baseUrl = System.getenv("TEST_APP_URL");
+    protected static final String baseUrl = Helper.getConfigProperty("TEST_APP_URL");
 
     @Before
     public void setUp() {

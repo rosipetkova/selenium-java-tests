@@ -2,10 +2,10 @@ package traditional.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import traditional.lib.BaseTest;
-import traditional.lib.Helper;
-import traditional.pages.LoginPage;
-import traditional.pages.TablePage;
+import lib.BaseTest;
+import lib.Helper;
+import pages.LoginPage;
+import pages.TablePage;
 
 public class DynamicContentTest extends BaseTest {
     private static final String username = "test";

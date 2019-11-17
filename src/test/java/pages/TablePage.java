@@ -1,6 +1,6 @@
-package traditional.pages;
+package pages;
 
-import traditional.lib.Helper;
+import lib.Helper;
 import traditional.pojos.TableRowPojo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
